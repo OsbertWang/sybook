@@ -1,4 +1,4 @@
-% geobook is built by Ran Wang
+% sybook is built by Ran Wang
 % Email: ranwang.osbert@outlook.com
 
 \NeedsTeXFormat{LaTeX2e}
@@ -39,14 +39,6 @@
   }
 }
 
-\renewcommand{\maketitle}{
-  \thispagestyle{empty}
-  \vspace*{0.2\textheight}
-  \pgfornamenthan[color=雪青,width=1.5cm]{14}\par
-  {\Huge\bfseries\@title}
-  
-}
-
 \RequirePackage[
   a4paper,
   inner   = 1in,
@@ -71,30 +63,7 @@
 }
 \fi
 
-\RequirePackage{unicode-math}
-
 \ifgeobook@customfont
-\setmainfont{libertinusserif}[
-  Extension      = .otf,
-  UprightFont    = *-regular,
-  BoldFont       = *-bold,
-  ItalicFont     = *-italic,
-  BoldItalicFont = *-bolditalic
-]
-\setsansfont{Roboto}[
-  Extension      = .ttf,
-  UprightFont    = *-Regular,
-  BoldFont       = *-Bold,
-  ItalicFont     = *-Italic,
-  BoldItalicFont = *-BoldItalic
-]
-\setmonofont{cmun}[
-  Extension   = .otf,
-  UprightFont = *btl,
-  BoldFont    = *tb,
-  SlantedFont = *bto,
-  HyphenChar  = None
-]
 \setCJKmainfont{Source Han Serif SC}[
 UprightFont    = *-Regular,
 BoldFont       = *-Bold,
@@ -112,7 +81,6 @@ UprightFont    = *-Light,
 BoldFont       = *-Medium,
 AutoFakeSlant  = 0.2
 ]
-\setmathfont{Libertinus Math}
 \else
 % -- overleaf 上默认的 fandol 中文字体缺字时，引 Noto Sans CJK SC 字体补充 --
   \ifgeobook@overleaf
@@ -120,9 +88,28 @@ AutoFakeSlant  = 0.2
   \fi
 \fi
 
-\RequirePackage{pgfornament-han,cncolours}
-
 \RequirePackage[%
   colorlinks,
-  pdfstartview = FitH,
-  citecolor    = blue]{hyperref}
+  pdfstartview = FitH]{hyperref}
+  
+\RequirePackage{pgfornament-han}
+\RequirePackage{cncolours}
+
+\renewcommand{\and}{\\[0.5\ccwd]}
+\renewcommand{\maketitle}
+{
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \pagestyle{empty}
+    \vspace*{0.2\textheight}
+    \makebox[0.5\linewidth][s]{\Huge\bfseries\@title}
+    \par
+    \hfill
+    \begin{tikzpicture}
+      \node (A) at (2,1) {\pgfornamenthan[scale=0.18,symmetry=v]{10}};
+      \node at (0,0) {\begin{minipage}[t]{0.25\linewidth}\large\@author\end{minipage}};
+    \end{tikzpicture}
+    \newpage
+    \thispagestyle{empty}
+  \end{titlepage}
+}
