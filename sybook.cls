@@ -110,14 +110,15 @@ AutoFakeSlant  = 0.2
     \pagestyle{empty}
     \setlength{\parindent}{0pt}
     \vspace*{0.15\textheight}
-    \begin{center}
+    \begin{minipage}{\linewidth}
+      \centering
       \begin{tikzpicture}
-        \node (A) at (0,0) {\pgfornamenthan[scale=0.18,symmetry=h]{75}};
+        \node (A) at (0,0) {\pgfornamenthan[scale=0.18]{6}};
         \node at (4.5,-1) {\makebox[0.5\linewidth][s]{\Huge\bfseries\@title}};
         \node at (10,-4) {\begin{minipage}[t]{0.25\linewidth}\large\@author\end{minipage}};
-        \node at (12.5,-5) {\pgfornamenthan[scale=0.18,symmetry=v]{75}};
-        \end{tikzpicture}
-    \end{center}
+        \node (B) at (12.5,-5) {\pgfornamenthan[scale=0.18,symmetry=c]{6}};
+      \end{tikzpicture}
+    \end{minipage}
     \newpage
     \thispagestyle{empty}
   \end{titlepage}
