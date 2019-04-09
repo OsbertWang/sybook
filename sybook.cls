@@ -33,7 +33,16 @@
     nameformat = \rule{\linewidth}{1bp}\par\bigskip\hfill\chapternamebox,
     number = \arabic{chapter},
     aftername = \par\medskip,
-    aftertitle = \par\bigskip\nointerlineskip\rule{\linewidth}{1bp}\par,
+%    aftertitle = \par\bigskip\nointerlineskip\rule{\linewidth}{1bp}\par,
+    aftertitle = \par\bigskip\nointerlineskip%
+    {\begin{tikzpicture}[%
+      decoration={%
+        markings,
+        mark=between positions 0 and 1 step 20pt with {\node[transform shape,anchor=south] at (0,0) {\pgfornamenthan[scale=0.1]{32}};}
+      }]
+      \node[anchor=south east] (B) at (0,0) {\pgfornamenthan[scale=0.1,symmetry=h]{10}};
+      \draw [decorate] (0,0) -- (\linewidth,0);
+    \end{tikzpicture}},
     pagestyle = empty,
   },
   section = {
@@ -100,6 +109,7 @@ AutoFakeSlant  = 0.2
   pdfstartview = FitH]{hyperref}
   
 \RequirePackage{pgfornament-han}
+\usetikzlibrary{decorations.markings}
 \RequirePackage{cncolours}
 
 \renewcommand{\and}{\\[0.5\ccwd]}
