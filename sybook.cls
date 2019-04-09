@@ -1,6 +1,8 @@
 % sybook is built by Ran Wang
 % Email: ranwang.osbert@outlook.com
 
+% !TeX root = main.tex
+
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{sybook}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
@@ -48,9 +50,14 @@
 
 \RequirePackage{fancyhdr}
 \fancyhf{}
-\fancyhead[RO]{\rightmark}
-\fancyhead[LE]{\leftmark}
-\fancyfoot[LE,RO]{--\ \thepage\ --}
+\fancyhead[LE,RO]{\leftmark}
+\fancyfoot[LE,RO]{
+  \begin{tikzpicture}
+    \node at (0,0) {\pgfornamenthan[scale=0.05,symmetry=v]{71}};
+    \node at (0.7,0) {\thepage};
+    \node at (1.4,0) {\pgfornamenthan[scale=0.05]{71}};
+  \end{tikzpicture}
+}
 \pagestyle{fancy}
 \renewcommand\sectionmark[1]{\markright{#1}}
 
@@ -101,14 +108,16 @@ AutoFakeSlant  = 0.2
   \begin{titlepage}
     \thispagestyle{empty}
     \pagestyle{empty}
-    \vspace*{0.2\textheight}
-    \makebox[0.5\linewidth][s]{\Huge\bfseries\@title}
-    \par
-    \hfill
-    \begin{tikzpicture}
-      \node (A) at (2,1) {\pgfornamenthan[scale=0.18,symmetry=v]{10}};
-      \node at (0,0) {\begin{minipage}[t]{0.25\linewidth}\large\@author\end{minipage}};
-    \end{tikzpicture}
+    \setlength{\parindent}{0pt}
+    \vspace*{0.15\textheight}
+    \begin{center}
+      \begin{tikzpicture}
+        \node (A) at (0,0) {\pgfornamenthan[scale=0.18,symmetry=h]{75}};
+        \node at (4.5,-1) {\makebox[0.5\linewidth][s]{\Huge\bfseries\@title}};
+        \node at (10,-4) {\begin{minipage}[t]{0.25\linewidth}\large\@author\end{minipage}};
+        \node at (12.5,-5) {\pgfornamenthan[scale=0.18,symmetry=v]{75}};
+        \end{tikzpicture}
+    \end{center}
     \newpage
     \thispagestyle{empty}
   \end{titlepage}
