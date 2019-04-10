@@ -24,7 +24,7 @@
 \ctexset{
   chapter = {
     name = {第,回},
-    nameformat = {\centering\pgfornamenthan[scale=0.05]{59}\par},
+    nameformat = {\centering\pgfornamenthan[scale=0.05,symmetry=h]{59}\par},
     titleformat = {\chaptertitleformat},
     aftertitle = {\par\centering\pgfornamenthan[scale=0.05,ydelta=-15pt]{59}},
     pagestyle = empty,
