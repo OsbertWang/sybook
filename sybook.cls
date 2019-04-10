@@ -21,33 +21,17 @@
 \fi
 \LoadClass{ctexbook}
 
-\newcommand{\chapternamebox}[1]{%
-  \parbox{\ccwd}{\linespread{1}\selectfont\centering #1}%
-}
 \ctexset{
-  part/pagestyle = empty,
   chapter = {
-    beforeskip = 0pt,
-    fixskip = true,
-    format = \huge\bfseries,
-    nameformat = \rule{\linewidth}{1bp}\par\bigskip\hfill\chapternamebox,
-    number = \arabic{chapter},
-    aftername = \par\medskip,
-%    aftertitle = \par\bigskip\nointerlineskip\rule{\linewidth}{1bp}\par,
-    aftertitle = \par\bigskip\nointerlineskip%
-    {\begin{tikzpicture}[%
-      decoration={%
-        markings,
-        mark=between positions 0 and 1 step 20pt with {\node[transform shape,anchor=south] at (0,0) {\pgfornamenthan[scale=0.1]{32}};}
-      }]
-      \node[anchor=south east] (B) at (0,0) {\pgfornamenthan[scale=0.1,symmetry=h]{10}};
-      \draw [decorate] (0,0) -- (\linewidth,0);
-    \end{tikzpicture}},
+    name = {第,回},
+    nameformat = {\centering\pgfornamenthan[scale=0.05]{59}\par},
+    titleformat = {\chaptertitleformat},
+    aftertitle = {\par\centering\pgfornamenthan[scale=0.05]{59}},
     pagestyle = empty,
-  },
-  section = {
-    format = \Large\bfseries\raggedright
   }
+}
+\newcommand{\chaptertitleformat}[1]{
+  \makebox[3\ccwd][s]{\huge\bfseries#1}
 }
 
 \RequirePackage[
@@ -109,8 +93,6 @@ AutoFakeSlant  = 0.2
   pdfstartview = FitH]{hyperref}
   
 \RequirePackage{pgfornament-han}
-\usetikzlibrary{decorations.markings}
-\RequirePackage{cncolours}
 
 \renewcommand{\and}{\\[0.5\ccwd]}
 \renewcommand{\maketitle}
