@@ -5,9 +5,9 @@
 
 编译环境要求 TeX Live 2018 及以上版本。
 
-推荐使用 `latexmk` 命令编译模板说明书：
+推荐使用 `latexmk` 命令编译：
 ```
-latexmk.exe -pdfxe -synctex=1 geobook.dtx
+latexmk.exe -pdfxe -synctex=1 main.tex
 ```
 
 ## 字体文件
